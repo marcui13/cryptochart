@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cryptochart:build:production"
+              "buildTarget": "cryptochart:build:production"
             },
             "development": {
-              "browserTarget": "cryptochart:build:development"
+              "buildTarget": "cryptochart:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cryptochart:build"
+            "buildTarget": "cryptochart:build"
           }
         },
         "test": {
