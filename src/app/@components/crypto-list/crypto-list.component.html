@@ -1,1 +1,34 @@
-<p>crypto-list works!</p>
+<div class="crypto-list">
+    <p-table #dt [value]="coinCryptoAssetsArray" styleClass="p-datatable-striped">
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-space-between">
+                <h1>Crypto List</h1>
+                <div class="flex">
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" [(ngModel)]="searchText" (input)="filterTable()" placeholder="Search" />
+                    </span>
+                </div>
+            </div>
+        </ng-template>    
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Change</th>
+          <th>Vol 24h</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-coin>
+        <tr>
+          <td>{{ coin.symbol }}</td>
+          <td>${{ coin.priceUsd | number: '1.2-2' }}</td>
+          <td>
+            <p-tag [value]="convertToTwoDecimalString(coin.changePercent24Hr)" [severity]="getSeverity(coin.changePercent24Hr)"></p-tag>
+          </td>                    
+          <td>${{ coin.volumeUsd24Hr | number: '1.2-2' }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
