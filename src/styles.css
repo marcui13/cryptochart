@@ -1,9 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @import 'primeng/resources/primeng.min.css';
-/* Order */
-@layer reset, primeng;
+@import '~primeflex/primeflex.css';
+@import '~primeicons/primeicons.css';
 
-html,
-body {
-  height: 99%;
-}
+
+.pi.pi-sun::before {
+    content: "\f185"; /* Código de Unicode para el icono del sol */
+  }
+  
+  .pi.pi-moon::before {
+    content: "\f186"; /* Código de Unicode para el icono de la luna */
+  }
+  

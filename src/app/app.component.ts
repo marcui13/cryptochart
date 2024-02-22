@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
     },
   ];
   public selectedTheme: { id: string; label: string } = this.themes[0];
+  public darkMode: boolean = false;
+  public toggleLabel: string = 'Light';
 
   /*************************************/
   /************constructor**************/
@@ -32,5 +34,11 @@ export class AppComponent implements OnInit {
 
   changeTheme(themeId: string) {
     this.themeSelectorService.switchTheme(themeId);
+  }
+
+  onToggleTheme() {
+    this.themeSelectorService.toggleTheme();
+    this.darkMode = !this.darkMode;
+    this.toggleLabel = this.darkMode ? 'Dark' : 'Light';
   }
 }

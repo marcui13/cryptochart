@@ -1,4 +1,4 @@
-import { Inject, Injectable, NgZone } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Injectable({
@@ -7,16 +7,22 @@ import { DOCUMENT } from '@angular/common';
 export class ThemeSelectorService {
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private ngZone: NgZone
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   switchTheme(theme: string) {
-    this.ngZone.run(() => {
-      const themeLink = this.document.getElementById('app-theme') as HTMLLinkElement;
-      if (themeLink) {
-        themeLink.href = theme + '.css'; // bundle name
-      }
-    });
+    const themeLink = this.document.getElementById('app-theme') as HTMLLinkElement;
+    if (themeLink) {
+      themeLink.href = theme + '.css'; // bundle name
+    }
+  }
+
+  toggleTheme() {
+    const themeLink = this.document.getElementById('app-theme') as HTMLLinkElement;
+    if (themeLink.href.includes('lara-dark-blue.css')) {
+      themeLink.href = 'lara-light-blue.css'; // bundle name
+    } else if (themeLink.href.includes('lara-light-blue.css')) {
+      themeLink.href = 'lara-dark-blue.css'; // bundle name
+    }
   }
 }

@@ -12,7 +12,9 @@ import { CryptoDetailComponent } from './@components/crypto-detail/crypto-detail
 // PRIMENG COMPONENTS
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
-import { DropdownModule } from 'primeng/dropdown'
+import { DropdownModule } from 'primeng/dropdown';
+import { CardModule } from 'primeng/card'
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DropdownModule } from 'primeng/dropdown'
     TableModule,
     TagModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    CardModule,
+    InputSwitchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
