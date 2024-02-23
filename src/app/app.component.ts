@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
 
   onToggleTheme() {
     this.themeSelectorService.toggleTheme();
-    this.darkMode = !this.darkMode;
     this.toggleLabel = this.darkMode ? 'Dark' : 'Light';
   }
 }
