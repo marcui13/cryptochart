@@ -14,9 +14,9 @@
       <ng-template pTemplate="header">
         <tr>
           <th>Name</th>
-          <th>Price</th>
-          <th>Change</th>
-          <th>Vol 24h</th>
+          <th (click)="sortTableByNumericField('priceUsd')">Price</th>
+          <th (click)="sortTableByNumericField('changePercent24Hr')">Change</th>
+          <th (click)="sortTableByNumericField('volumeUsd24Hr')">Vol 24h</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-coin>

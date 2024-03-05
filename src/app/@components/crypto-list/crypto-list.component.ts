@@ -31,7 +31,6 @@ export class CryptoListComponent implements OnInit {
       (resp) => {
         if (Array.isArray(resp.data)) {
           this.coinCryptoAssetsArray = resp.data;
-          console.log(this.coinCryptoAssetsArray);
         } else {
           console.error('Los datos recibidos no son un arreglo:', resp.data);
         }
@@ -57,7 +56,6 @@ export class CryptoListComponent implements OnInit {
   filterTable() {
     this.dataTable.filter(this.searchText, 'name', 'contains');
     this.filteredCoins = this.dataTable.filteredValue || [];
-    console.log(this.filteredCoins);
   }
 
   convertToTwoDecimalString(input: string): string {
@@ -70,5 +68,20 @@ export class CryptoListComponent implements OnInit {
     } else {
       return 'Invalid number';
     }
+  }
+
+  sortTableByNumericField(field: string) {
+    const isNumeric = typeof this.dataTable.value[0][field] === 'number';
+    this.dataTable.value.forEach(item => {
+      if(!isNumeric){
+        item[field] = parseFloat(item[field]);
+      }
+    });
+    this.dataTable.sortOrder *= -1;
+    this.dataTable.value.sort((a, b) => {
+      return (a[field] - b[field]) * this.dataTable.sortOrder;
+    });
+    this.dataTable.sortSingle();
+    this.filteredCoins = this.dataTable.filteredValue || [];
   }
 }
